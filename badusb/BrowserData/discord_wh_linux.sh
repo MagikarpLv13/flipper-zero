@@ -22,11 +22,15 @@ else
     echo "L'architecture n'est pas reconnue : $architecture."
 fi
 
-
 for file in "${files[@]}"; do
-    curl \
-  -H "Content-Type: application/json" \
-  -d '{"username": "Murerig", "content": "Coin Coin 🦆"}' \
-  -F "$file=$file" \
+    echo "$file"
   $WEBHOOK_URL
 done
+
+#for file in "${files[@]}"; do
+#    curl \
+#  -H "Content-Type: application/json" \
+#  -d '{"username": "Murerig", "content": "Coin Coin 🦆"}' \
+#  -F "$file=$file" \
+#  $WEBHOOK_URL
+#done

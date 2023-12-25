@@ -1,11 +1,10 @@
-# Spécifiez l'URL du fichier à télécharger
-$url = "https://example.com/votre-fichier.exe"
+# Ouvre le Bloc-notes
+Start-Process notepad.exe -Wait
 
-# Spécifiez le chemin de destination pour le téléchargement
-$destination = "C:\Chemin\Vers\Votre\Repertoire\votre-fichier.exe"
+# Pause pour laisser le Bloc-notes s'ouvrir complètement
+Start-Sleep -Seconds 2
 
-# Télécharge le fichier depuis l'URL spécifiée
-Invoke-WebRequest -Uri $url -OutFile $destination
+# Écrit "salut" dans le Bloc-notes
+Add-Type -AssemblyName System.Windows.Forms
+[System.Windows.Forms.SendKeys]::SendWait('salut')
 
-# Exécute le fichier téléchargé
-Start-Process -FilePath $destination -Wait

@@ -2,7 +2,7 @@ REM     Title: Browser Data
 
 REM     Author: MagikarpLv13
 
-REM     Description: This payload is meant to steal Browser Data and send ii using discord webhooks
+REM     Description: This payload is meant to steal Browser Data and send it using discord webhooks
 
 REM     Target: Maximum Linux distributions
 

